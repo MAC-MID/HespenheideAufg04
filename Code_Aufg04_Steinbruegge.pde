@@ -4,7 +4,7 @@ void setup(){
   size(600,600);
   
   for(int i = 0; i < 100; i++){
-    balls.add(new Ball(random(0,width),random(0, height),10, 3, 3));
+    balls.add(new Ball(random(0,width),random(0, height),10, random(-3, 3), random(-3,3)));
   }
 
 }
@@ -16,6 +16,7 @@ void draw(){
   
   for(int i = 0; i < balls.size(); i++){
     balls.get(i).update();
+    balls.get(i).Abprallen(balls);
     balls.get(i).draw();
   }
 }

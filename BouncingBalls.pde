@@ -45,4 +45,16 @@ class Ball{
     Position.x = Position.x+Bewegung.x;
     Position.y = Position.y+Bewegung.y;
   }
+  
+  
+  public void Abprallen(ArrayList<Ball> balls){
+    
+    for(int i = 0; i < balls.size(); i++){
+      if (dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) <= r && dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) > 0){
+        println("Penis");
+      }
+    }
+    
+  }
+  
 }
