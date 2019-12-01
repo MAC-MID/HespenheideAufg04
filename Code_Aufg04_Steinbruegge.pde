@@ -1,4 +1,5 @@
 ArrayList<Ball> balls = new ArrayList<Ball>();
+Ball Mouse = new Ball (0,0, 50, 0,0);
 
 void setup(){
   size(600,600);
@@ -13,6 +14,11 @@ void draw(){
   
   fill(150,40);
   rect(0,0, width, height);
+  
+  Mouse.Position.x = mouseX;
+  Mouse.Position.y = mouseY;
+  
+  Mouse.draw();
   
   for(int i = 0; i < balls.size(); i++){
     balls.get(i).update();

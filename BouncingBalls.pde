@@ -4,6 +4,8 @@ class Ball{
   PVector Bewegung = new PVector();
   
   int r;
+  float MaxSpeed = 2.5;
+  float MinSpeed = 1;
   
   Ball (float x, float y, int r, float bx, float by) {
     Position.x = x;
@@ -42,8 +44,15 @@ class Ball{
       Bewegung.x = Bewegung.x*(-1)+random(-1, 1);
     }
       
+    Bewegung.limit(MaxSpeed);
+    
+    if(Bewegung.mag() < MinSpeed){
+      Bewegung.setMag(MinSpeed);
+    }
+      
     Position.x = Position.x+Bewegung.x;
     Position.y = Position.y+Bewegung.y;
+    
   }
   
   
@@ -51,7 +60,8 @@ class Ball{
     
     for(int i = 0; i < balls.size(); i++){
       if (dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) <= r && dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) > 0){
-        println("Penis");
+        Bewegung.y = Bewegung.y*(-1)+random(-1, 1);
+        Bewegung.x = Bewegung.x*(-1)+random(-1, 1);
       }
     }
     
