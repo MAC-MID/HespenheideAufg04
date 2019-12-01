@@ -7,6 +7,8 @@ class Ball{
   float MaxSpeed = 2.5;
   float MinSpeed = 1;
   
+  Ball LastCollision;
+  
   Ball (float x, float y, int r, float bx, float by) {
     Position.x = x;
     Position.y = y;
@@ -59,12 +61,36 @@ class Ball{
   public void Abprallen(ArrayList<Ball> balls){
     
     for(int i = 0; i < balls.size(); i++){
-      if (dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) <= r && dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) > 0){
-        Bewegung.y = Bewegung.y*(-1)+random(-1, 1);
-        Bewegung.x = Bewegung.x*(-1)+random(-1, 1);
+      if (dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) <= (r+balls.get(i).r)/2 && dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) > 0){
+        if(this.LastCollision != balls.get(i)){
+          this.LastCollision =  balls.get(i);
+          Bewegung.y = Bewegung.y*(-1)+random(-1, 1);
+          Bewegung.x = Bewegung.x*(-1)+random(-1, 1);
+        
+        }
+        else{
+          println("Penis");
+        }
       }
     }
     
   }
   
+  public void MouseCollision(ArrayList<Ball> balls){
+    
+    for(int i = 0; i < balls.size(); i++){
+      if (dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) < (r+balls.get(i).r)/2 && dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) > 0){
+         
+         if(balls.get(i).LastCollision != this){
+            balls.get(i).LastCollision =  this;
+            balls.get(i).Bewegung.y =  balls.get(i).Bewegung.y*(-1)+random(-1, 1);
+            balls.get(i).Bewegung.x =  balls.get(i).Bewegung.x*(-1)+random(-1, 1);
+        
+        }
+        else{
+          println("Penis");
+        }
+      }
+    } 
+  }
 }
