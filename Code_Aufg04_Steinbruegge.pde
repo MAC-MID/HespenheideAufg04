@@ -13,7 +13,7 @@ void setup(){
 
 void draw(){ 
   
-  fill(0,20);
+  fill(0,30);
   rect(0,0, width, height);
   
   //Mouse.Position.x = mouseX;
@@ -36,7 +36,7 @@ void mouseClicked(){
   int length = (int) random (5,20);
  
   for(int i = 0; i < length; i++){
-    balls.add(new Ball(random(mouseX-50,mouseX+50),random(mouseY-50, mouseY+50),20, random(-3, 3), random(-3,3), 255));
+    balls.add(new Ball(random(mouseX-100,mouseX+100),random(mouseY-100, mouseY+100),20, random(-3, 3), random(-3,3), 255));
   }
   
 }

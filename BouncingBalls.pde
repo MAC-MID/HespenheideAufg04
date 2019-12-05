@@ -8,6 +8,7 @@ class Ball{
   float MinSpeed = 1;
   
   color Farbe;
+  
   int counterCollision = 0;
 
   Ball LastCollision;
@@ -30,24 +31,38 @@ class Ball{
     
     switch(floor((this.counterCollision)/25)){
       case 0: 
-        this.Farbe = color(239,121,138);
+        color from = color(239,121,138);
+        color to = color(216,17,89);
+        color interA = lerpColor(from, to, (float)(this.counterCollision)/25);
+        this.Farbe = interA;
         break;
       case 1:
-        this.Farbe = color(247,169,168);
+        color from1 = color(216,17,89);
+        color to1 = color(125,130,184);
+        color interB = lerpColor(from1, to1, ((float)(this.counterCollision)/25)-1);
+        this.Farbe = interB;
         break;
       case 2:
-        this.Farbe = color(125,130,184);
+        color from2 = color(125,130,184);
+        color to2 = color(229,195,209);
+        color interC = lerpColor(from2, to2, ((float)(this.counterCollision)/25)-2);
+        this.Farbe = interC;
         break;
       case 3:
-        this.Farbe = color(229,195,209);
+        color from3 = color(229,195,209);
+        color to3 = color(255);
+        color interD = lerpColor(from3, to3, ((float)(this.counterCollision)/25)-3);
+        this.Farbe = interD;
         break;
     }
     
-    /* DEBUG 
+    //DEBUG
+    /*
     textSize(20);
     fill(255);
     text(this.counterCollision, this.Position.x, this.Position.y);
     */
+    
   }
   
   public void update(){
