@@ -1,4 +1,4 @@
-class Ball{
+  class Ball{
   
   PVector Position = new PVector();
   PVector Bewegung = new PVector();
@@ -21,7 +21,7 @@ class Ball{
     
     Bewegung.x = bx;
     Bewegung.y = by;
-  }
+    }
   
   public void draw(){
     fill(this.Farbe);
@@ -107,7 +107,7 @@ class Ball{
     
     for(int i = 0; i < balls.size(); i++){      
       
-      if (dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) <= (r+balls.get(i).r)/2 && dist(Position.x, Position.y, balls.get(i).Position.x, balls.get(i).Position.y) > 0){
+      if (Abstand(Position, balls.get(i).Position) <= (r+balls.get(i).r)/2 && Abstand(Position, balls.get(i).Position) > 0){  
         if(this.LastCollision != balls.get(i)){
           
           this.LastCollision =  balls.get(i);
@@ -125,6 +125,12 @@ class Ball{
     }
     
   }
+  
+  float Abstand(PVector Objekt1, PVector Objekt2){
+    
+    return dist(Objekt1.x, Objekt1.y, Objekt2.x, Objekt2.y);  
+  }
+  
   
   /*public void MouseCollision(ArrayList<Ball> balls){
     
